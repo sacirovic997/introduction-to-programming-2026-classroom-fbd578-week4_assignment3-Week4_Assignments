@@ -1,20 +1,32 @@
-/*
-WEEK 1 — TASK 2 (Recursion)
+#include <cs50.h>
+#include <stdio.h>
 
-Goal:
-Practice recursion.
+void pyramid(int n, int max);
 
-Task:
-1. Ask the user for a positive integer n.
-2. Use a recursive function to print:
+int main(void)
+{
+    int n;
+    do
+    {
+        n = get_int("Height: ");
+    }
+    while (n < 1);
 
-#
-##
-###
-####
+    pyramid(1, n);
+}
 
-Rules:
-- You must create a recursive function.
-- You cannot use a loop to print rows.
-- Base case must be correct.
-*/
+void pyramid(int row, int max)
+{
+    if (row > max)
+    {
+        return;
+    }
+
+    for (int i = 0; i < row; i++)
+    {
+        printf("#");
+    }
+    printf("\n");
+
+    pyramid(row + 1, max);
+}
